@@ -1,14 +1,13 @@
 import { Search, SquarePen } from 'lucide-react'
 import React from 'react'
+import NewChat from './NewChat'
 
 const ChatTop = () => {
   return (
     <main className='px-[24px] flex flex-col gap-4'>
         <div className='flex items-center justify-between'>
             <h1 className='font-[700] text-[24px] text-[#050505]'>Chats</h1>
-            <button className=' flex items-center justify-center rounded-full transition bg-[#eeeeee] hover:bg-[#e8e8e8] h-[37px] w-[37px] '>
-                <SquarePen/>                
-            </button>
+            <NewChat/>
         </div>
         <div className='w-full h-[42px]  px-3 rounded-full bg-[#f3f3f3] flex items-center'>
             <Search size={20} className='text-[#767676]'/>
