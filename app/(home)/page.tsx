@@ -6,9 +6,32 @@ import { API_URL } from '@/configs'
 import { useChatStore } from '@/store/Chat_store'
 import { useAuthStore } from '@/store/Auth_store'
 const page = () => {
+    const user = useAuthStore(state => state.user)
+    const setUser = useAuthStore(state => state.setUser)
     const setAuth = useAuthStore(state => state.setAuth)
     const Chats = useChatStore(state => state.Chats)
     const setChats = useChatStore(state => state.setChats)
+    useEffect(() => {
+        if(!localStorage.getItem('token')) {
+            setAuth(false)
+        }
+        if(!user) {
+            axios.get(API_URL+'/auth/user',{headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
+            .then(res => {
+                setUser(res.data)
+                return 
+            })
+            .catch(err => {
+                if(err.response.status === 401) {
+                    setAuth(false)
+                    localStorage.removeItem('token')
+                }
+                else {
+                    alert('Server Error')
+                }
+            })
+        }
+    }, [])
     useEffect(() => {
         if(!Chats){
             axios.get(API_URL+'/chat',{headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})

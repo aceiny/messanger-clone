@@ -4,7 +4,7 @@ type AuthStore = {
     isAuth: boolean;
     LoginLoading : boolean;
     CheckAuthLoading : boolean;
-    user : null ; 
+    user : any ; 
     setAuth: (isLogin: boolean) => void;
     setUser: (user: any) => void;
     setLoginLoading : (loading : boolean) => void;
