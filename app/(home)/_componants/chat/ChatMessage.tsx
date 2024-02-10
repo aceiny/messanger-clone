@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils'
 import React from 'react'
 
 interface Props {
-    sender: {} , 
+    sender: any, 
     context: string,
     sent: boolean
 }
