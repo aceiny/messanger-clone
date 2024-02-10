@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "./_componants/sidebar/Sidebar";
+import SideBar from "./_componants/sidebar/Sidebar";
 interface Props {
     children: React.ReactNode;
 }
@@ -8,7 +8,7 @@ export default function HomeLayout({
 } : Props) {
     return (
     <div className="flex w-full h-screen">
-        <Sidebar />
+        <SideBar />
         <div>
             {children}
         </div>

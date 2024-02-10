@@ -1,9 +1,11 @@
 "use client"
 import React from 'react'
 import SidebarSection from './SidebarSection'
-import { Archive, Carrot, MessageCircle, MessageCircleMore, Store, Users } from 'lucide-react'
+import { Archive, Carrot, MessageCircle, MessageCircleMore,Sidebar , Store, Users } from 'lucide-react'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import UserProfile from './UserProfile'
 
-const Sidebar = () => {
+const SideBar = () => {
   const sections = [
     {
       name : "Home",
@@ -32,7 +34,7 @@ const Sidebar = () => {
     }
   ]
   return (
-    <div className='w-[60px] border-r border-[#E5E5E5] pt-4 h-full'>
+    <div className='w-[60px] border-r border-[#E5E5E5] py-4 h-full flex flex-col justify-between'>
         <div className='flex flex-col justify-center items-center'>
           {
             sections.map((section , index) => (
@@ -40,8 +42,14 @@ const Sidebar = () => {
             ))
           }
         </div>
+        <div className='flex flex-col items-center  justify-center gap-3'>
+          <UserProfile/>
+          <button className=' flex items-center justify-center rounded-full transition bg-[#eeeeee] hover:bg-[#e8e8e8] h-[37px] w-[37px] '>
+            <Sidebar/>
+          </button>
+        </div>
     </div>
   )
 }
 
-export default Sidebar
+export default SideBar
