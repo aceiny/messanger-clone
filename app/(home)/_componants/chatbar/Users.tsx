@@ -6,12 +6,13 @@ import { useUserStore } from '@/store/User_store'
 import { cn } from '@/lib/utils'
 import { useAuthStore } from '@/store/Auth_store'
 
-const UsersContainer = ({ Choosed , ChooseUser} : {Choosed : any , ChooseUser : any} ) => {
+const UsersContainer = ({ UserInput , Choosed , ChooseUser} : {UserInput : any , Choosed : any , ChooseUser : any} ) => {
     const loggedUser = useAuthStore(state => state.user)
     const users = useUserStore(state => state.Users)
     const setUsers = useUserStore(state => state.setUsers)
     const ClickHandler = (user : any) => {
         ChooseUser(user)
+        UserInput.current.value = ''
         setUsers(null)
     }
   return (

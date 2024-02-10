@@ -3,10 +3,13 @@ import { API_URL } from '@/configs'
 import { useUserStore } from '@/store/User_store'
 import axios from 'axios'
 import { SquarePen } from 'lucide-react'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import UsersContainer from './Users'
+import { useChatStore } from '@/store/Chat_store'
 
 const NewChat = () => {
+    const userInput = useRef(null)
+    const addChat = useChatStore(state => state.addChat)
     const Users = useUserStore(state => state.Users)
     const setUsers = useUserStore(state => state.setUsers)
     const [choosedUser, setChoosedUser] = useState([]) as any
@@ -29,11 +32,13 @@ const NewChat = () => {
         const dataObj = {
             Participants : choosedUser.map((user : any) => user._id),
             IsGroup : choosedUser.length > 1 ? true : false,
-            Name : choosedUser.length > 1 ? groupName : choosedUser[0].Name
+            Name : choosedUser.length > 1 ? groupName : choosedUser[0].Name,
+            ImageUrl : choosedUser[0].ImageUrl
         }
         await axios.post(`${API_URL}/chat`, dataObj , {headers : {Authorization : `Bearer ${localStorage.getItem('token')}`}})
         .then(res =>{
             console.log(res.data)
+            addChat(res.data)
         })
         .catch(err =>{
             console.log(err.response)
@@ -56,9 +61,8 @@ const NewChat = () => {
                     <DialogClose />
                 </DialogHeader>
                 <form action="" className='flex flex-col gap-3' onSubmit={CreateChat}>
-                    <input type="text" placeholder='user' onChange={GetUsers} className='input-auth' />
-                    <UsersContainer Choosed={choosedUser} ChooseUser={ChooseUser}/>
-                    <input type="text" placeholder='message' className='input-auth'/>
+                    <input type="text" placeholder='user' onChange={GetUsers} ref={userInput} className=' input-auth' />
+                    <UsersContainer UserInput={userInput} Choosed={choosedUser} ChooseUser={ChooseUser}/>
                     <div className='flex items-center justify-start flex-wrap gap-3'>
                         {
                             choosedUser && choosedUser.map((user : any) => (

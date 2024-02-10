@@ -12,8 +12,8 @@ const ChatBar = () => {
         <div className='w-full px-[6px] overflow-y-auto'>
           {
             Chats && 
-            Chats.length > 0 ? Chats.map((chat, index) => <ChatCard key={index} />) 
-            : <h1 className='text-[#050505] text-[20px] font-[700]'>No Chat Found</h1>
+            Chats.length > 0 ? Chats.map((chat : any , index : number) => <ChatCard key={index} name={chat.Name}  image={chat.ImageUrl}/>) 
+            : <div className='text-[#050505] w-full h-full flex  items-center justify-center  text-[20px] font-[700]'><p>No Chat Found</p></div>
           }
         </div>
     </div>
