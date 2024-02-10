@@ -13,13 +13,13 @@ const ChatHeader = () => {
             </div>
         </div>
         <div className='flex items-center gap-3 text-[#0A7CFF] text-[20px]'>
-            <button className='rounded-full flex justify-center bg-transparent items-center hover:bg-[#e8e8e8] transition  h-[40px] w-[40px]'>
+            <button className='button-circle'>
                 <FaPhoneAlt/>
             </button>
-            <button className='rounded-full flex justify-center bg-transparent items-center hover:bg-[#e8e8e8] transition  h-[40px] w-[40px]'>
+            <button className='button-circle'>
                 <FaVideo />
             </button>
-            <button className='rounded-full flex justify-center bg-transparent items-center hover:bg-[#e8e8e8] transition  h-[40px] w-[40px]'>
+            <button className='button-circle'>
                 <BsThreeDots/>
             </button>
         </div> 

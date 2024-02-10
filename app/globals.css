@@ -95,5 +95,7 @@
   text-transform: uppercase;
   margin-top: 0.5rem;
   display: none;
-
+}
+.button-circle{
+  @apply rounded-full flex justify-center bg-transparent items-center hover:bg-[#e8e8e8] transition  h-[40px] w-[40px]
 }

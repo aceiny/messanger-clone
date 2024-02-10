@@ -2,7 +2,7 @@ import React from 'react'
 
 const ChatBody = () => {
   return (
-    <div>ChatBody</div>
+    <div className='flex-1'>ChatBody</div>
   )
 }
 
