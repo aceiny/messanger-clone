@@ -6,11 +6,21 @@ import { PiStickerFill } from "react-icons/pi";
 import { HiGif } from "react-icons/hi2";
 import { AiFillLike } from "react-icons/ai";
 import { MdEmojiEmotions } from "react-icons/md";
+import axios from 'axios';
+import { API_URL } from '@/configs';
+import { useChatStore } from '@/store/Chat_store';
 const ChatFooter = () => {
+    const chat = useChatStore(state => state.Chat)
     const [message , setMessage] = useState("")
-    const handleKeyUp = (e : any) => {
-        if(e.key === "Enter"){
-            //send message logique
+    const handleKeyUp = async (e : any) => {
+        if(e.key === "Enter" && message !== ""){
+            await axios.post(API_URL+"/chat/message/" + chat._id , {Message : message} , {headers : {Authorization : `Bearer ${localStorage.getItem('token')}`}})
+            .then(res =>{
+                console.log(res.data)
+            })
+            .catch(err =>{
+                console.log(err.response)
+            })
             e.target.value = ""
             setMessage("")
         }

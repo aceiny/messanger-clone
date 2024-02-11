@@ -11,7 +11,7 @@ const Chat = () => {
         chat ?     
         <>
           <ChatHeader />
-          <ChatBody />
+          <ChatBody messages={chat.Messages} />
           <ChatFooter />
         </>
          : <h1>no chat selected</h1>
