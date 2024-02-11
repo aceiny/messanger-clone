@@ -12,7 +12,7 @@ type AuthStore = {
 }
 
 export const useAuthStore = create<AuthStore>((set : any) => ({
-    isAuth: true,
+    isAuth: false,
     user: null,
     LoginLoading : false,
     CheckAuthLoading : false,
