@@ -5,7 +5,7 @@ import axios from 'axios'
 import { API_URL } from '@/configs'
 import { useChatStore } from '@/store/Chat_store'
 import { useAuthStore } from '@/store/Auth_store'
-const page = () => {
+const Page = () => {
     const user = useAuthStore(state => state.user)
     const setUser = useAuthStore(state => state.setUser)
     const setAuth = useAuthStore(state => state.setAuth)
@@ -63,4 +63,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

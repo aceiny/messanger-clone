@@ -66,7 +66,7 @@ const NewChat = () => {
                     <div className='flex items-center justify-start flex-wrap gap-3'>
                         {
                             choosedUser && choosedUser.map((user : any) => (
-                                <div className='flex flex-col border rounded hover:bg-[#f0f0f0] p-3 items-center gap-1'>
+                                <div key={user._id} className='flex flex-col border rounded hover:bg-[#f0f0f0] p-3 items-center gap-1'>
                                     <img src={user.ImageUrl} alt="image" className='w-[25px] object-cover  h-[25px] rounded-full ' />
                                     <h2 className='font-bold text-[#050505] text-[14px]'>{user.Name}</h2>
                                 </div>
