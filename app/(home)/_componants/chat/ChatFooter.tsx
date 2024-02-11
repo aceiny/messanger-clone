@@ -9,8 +9,10 @@ import { MdEmojiEmotions } from "react-icons/md";
 import axios from 'axios';
 import { API_URL } from '@/configs';
 import { useChatStore } from '@/store/Chat_store';
+import { useSocketStore } from '@/store/Socket_store';
 const ChatFooter = () => {
     const chat = useChatStore(state => state.Chat)
+    const socket = useSocketStore(state => state.socket)
     const [message , setMessage] = useState("")
     const handleKeyUp = async (e : any) => {
         if(e.key === "Enter" && message !== ""){
@@ -23,6 +25,10 @@ const ChatFooter = () => {
             })
             e.target.value = ""
             setMessage("")
+        }
+        if(socket) {
+            //socket.emit('typing', {ChatId : chat._id})
+            socket.emit('message' , {message , chatId : chat._id})
         }
         setMessage(e.target.value)
     }
